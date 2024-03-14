@@ -3,4 +3,12 @@
   <groupId>senac-backend-20241-victorlapa</groupId>
   <artifactId>senac-backend-20241-victorlapa</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  <dependencies>
+  	<dependency>
+  		<groupId>senac-20241-backend-exemplos</groupId>
+  		<artifactId>senac-20241-backend-exemplos</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  </dependencies>
 </project>
