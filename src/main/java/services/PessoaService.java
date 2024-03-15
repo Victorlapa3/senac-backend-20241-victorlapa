@@ -31,4 +31,21 @@ public class PessoaService {
 	public List<Pessoa> consultarTodas() {
 		return this.pessoaRepository.consultarTodos();
 	}
+	private void validarPessoa(Pessoa pessoa) throws ControleDeVacinaException{
+		if(pessoa.getNome() == null || pessoa.getNome() == "") {
+			throw new ControleDeVacinaException("O campo 'Nome' deve ser preenchido.");
+		}
+		if(pessoa.getDtnascimento() == null) {
+			throw new ControleDeVacinaException("O campo 'Data de nascimento' deve ser preenchido.");
+		}
+		if(pessoa.getSexo() == null || pessoa.getSexo() == "") {
+			throw new ControleDeVacinaException("O campo 'Sexo' deve ser preenchido.");
+		}
+		if(pessoa.getCpf() == null || pessoa.getCpf() == "") {
+			throw new ControleDeVacinaException("O campo 'CPF' deve ser preenchido.");
+		} 
+		if(pessoa.getTipo() == null || pessoa.getTipo() == "") {
+			throw new ControleDeVacinaException("O campo 'Tipo' deve ser preenchido.");
+		}
+	}
 }
