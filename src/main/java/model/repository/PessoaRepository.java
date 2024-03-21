@@ -9,7 +9,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import model.entity.Pessoa;
-import model.entity.vemnox1.Jogador;
 
 public class PessoaRepository implements BaseRepository<Pessoa> {
 
@@ -17,9 +16,10 @@ public class PessoaRepository implements BaseRepository<Pessoa> {
 //		
 //	}
 	
+	
 	@Override
 	public Pessoa salvar(Pessoa novaPessoa) {
-		String query = "INSERT INTO pessoa (nome, dtNascimento, sexo, CPF) VALUES (?, ?, ?, ?)";
+		String query = "INSERT INTO pessoa (nome, dtNascimento, sexo, CPF, tipo, pais) VALUES (?, ?, ?, ?, ?, ?)";
 		Connection conn = Banco.getConnection();
 		PreparedStatement pstmt = Banco.getPreparedStatementWithPk(conn, query);
 		try {
@@ -33,7 +33,7 @@ public class PessoaRepository implements BaseRepository<Pessoa> {
 				novaPessoa.setId(resultado.getInt(1));
 			}
 		} catch (SQLException erro) {
-			System.out.println("Erro ao salvar novo jogador");
+			System.out.println("Erro ao salvar nova pessoa");
 			System.out.println("Erro: " + erro.getMessage());
 		} finally {
 			Banco.closeStatement(pstmt);
@@ -47,6 +47,10 @@ public class PessoaRepository implements BaseRepository<Pessoa> {
 		pstmt.setDate(2, Date.valueOf(novaPessoa.getDtNascimento()));
 		pstmt.setString(3, novaPessoa.getSexo() + "");
 		pstmt.setString(4, novaPessoa.getCpf());
+		//preencher tipo
+		pstmt.setString(5, novaPessoa.getTipo());
+		pstmt.setInt(6, novaPessoa.getPais().getId());
+		pstmt.setInt(7, novaPessoa.getId());
 	}
 
 	@Override
@@ -82,8 +86,8 @@ public class PessoaRepository implements BaseRepository<Pessoa> {
 			pstmt.setString(3, novaPessoa.getSexo() + "");
 			pstmt.setString(4, novaPessoa.getCpf());
 			pstmt.setString(5, novaPessoa.getTipo());
-
 			pstmt.setInt(6, novaPessoa.getId());
+			pstmt.setInt(7, novaPessoa.getPais().getId());
 		} catch (SQLException erro) {
 			System.out.println("Erro ao atualizar pessoa");
 			System.out.println("Erro: " + erro.getMessage());

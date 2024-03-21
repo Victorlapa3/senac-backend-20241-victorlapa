@@ -1,4 +1,4 @@
-package services;
+package service;
 
 import java.util.List;
 
@@ -14,8 +14,6 @@ public class PessoaService {
 		//Caso sim -> devolver exceção
 		
 		//Caso não -> salva no banco a novaPessoa
-		
-		salvar(novaPessoa);
 		
 		return pessoaRepository.salvar(novaPessoa);
 	}

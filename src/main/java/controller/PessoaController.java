@@ -12,7 +12,7 @@ import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import model.entity.Pessoa;
-import services.PessoaService;
+import service.PessoaService;
 
 @Path("/pessoa")
 public class PessoaController {
@@ -22,13 +22,12 @@ public class PessoaController {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	
 	public Pessoa salvar(Pessoa novaPessoa) throws ControleDeVacinaException {
 		return service.salvar(novaPessoa);
 	}
 	
 	@DELETE
-	@Path("/{id")
+	@Path("/{id}")
 	public boolean excluir(@PathParam("id") int id) {
 		return service.excluir(id);
 	}

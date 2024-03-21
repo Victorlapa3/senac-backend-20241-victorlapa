@@ -9,12 +9,13 @@ public class Pessoa {
 	private String cpf;
 	private String tipo;
 	private int id;
+	private Pais pais;
 	
 	public Pessoa() {
 		super();
 	}
 	
-	public Pessoa(String nome, LocalDate dtNascimento, char sexo, String cpf, String tipo, int id) {
+	public Pessoa(String nome, LocalDate dtNascimento, char sexo, String cpf, String tipo, int id, Pais pais) {
 		super();
 		this.nome = nome;
 		this.dtNascimento = dtNascimento;
@@ -22,8 +23,15 @@ public class Pessoa {
 		this.cpf = cpf;
 		this.tipo = tipo;
 		this.id = id;
+		this.pais = pais;
 	}
-	
+	public Pais getPais() {
+		return pais;
+	}
+
+	public void setPais(Pais pais) {
+		this.pais = pais;
+	}
 	public int getId() {
 		return id;
 	}
