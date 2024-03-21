@@ -53,7 +53,8 @@
       <artifactId>jackson-dataformat-yaml</artifactId>
       <version>2.15.0</version>
    </dependency>
-  </dependencies><build>
+  </dependencies>
+  <build>
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -67,5 +68,5 @@
         <version>3.2.3</version>
       </plugin>
         </plugins>
-        </build>
+    </build>
 </project>

@@ -58,7 +58,7 @@ public class PaisRepository {
 //	} catch (SQLException erro) {
 //		System.out.println("Erro ao executar consultar pais com id (" + id + ")");
 //		System.out.println("Erro: " + erro.getMessage());
-//	} finally {
+//	} finally {  
 //		Banco.closeResultSet(resultado);
 //		Banco.closeStatement(stmt);
 //		Banco.closeConnection(conn);

@@ -15,8 +15,6 @@ public class PessoaRepository implements BaseRepository<Pessoa> {
 //	public Pessoa verificarCpf(Pessoa novaPessoa) {
 //		
 //	}
-	
-	
 	@Override
 	public Pessoa salvar(Pessoa novaPessoa) {
 		String query = "INSERT INTO pessoa (nome, dtNascimento, sexo, CPF, tipo, pais) VALUES (?, ?, ?, ?, ?, ?)";
@@ -130,36 +128,36 @@ public class PessoaRepository implements BaseRepository<Pessoa> {
 
 	@Override
 	public ArrayList<Pessoa> consultarTodos() {
-	ArrayList<Pessoa> pessoas = new ArrayList<>();
-	Connection conn = Banco.getConnection();
-	Statement stmt = Banco.getStatement(conn);
-	
-	ResultSet resultado = null;
-	String query = " SELECT * FROM pessoa";
-	
-	try{
-		resultado = stmt.executeQuery(query);
-		while(resultado.next()){
-			Pessoa pessoa = new Pessoa();
-			
-			//TODO este bloco repete-se no consultarTodos().... refatorar!
-			pessoa.setId(Integer.parseInt(resultado.getString("ID")));
-			pessoa.setNome(resultado.getString("NOME"));
-			pessoa.setDtNascimento(resultado.getDate("DtNascimento").toLocalDate());
-			pessoa.setSexo(resultado.getString("SEXO").charAt(0));
-			pessoa.setCpf(resultado.getString("CPF"));
-			pessoa.setTipo(resultado.getString("TIPO"));
-			pessoas.add(pessoa);
+		ArrayList<Pessoa> pessoas = new ArrayList<>();
+		Connection conn = Banco.getConnection();
+		Statement stmt = Banco.getStatement(conn);
+
+		ResultSet resultado = null;
+		String query = " SELECT * FROM pessoa";
+
+		try {
+			resultado = stmt.executeQuery(query);
+			while (resultado.next()) {
+				Pessoa pessoa = new Pessoa();
+
+				// TODO este bloco repete-se no consultarTodos().... refatorar!
+				pessoa.setId(Integer.parseInt(resultado.getString("ID")));
+				pessoa.setNome(resultado.getString("NOME"));
+				pessoa.setDtNascimento(resultado.getDate("DtNascimento").toLocalDate());
+				pessoa.setSexo(resultado.getString("SEXO").charAt(0));
+				pessoa.setCpf(resultado.getString("CPF"));
+				pessoa.setTipo(resultado.getString("TIPO"));
+				pessoas.add(pessoa);
+			}
+		} catch (SQLException erro) {
+			System.out.println("Erro ao executar consultar todas as pessoas");
+			System.out.println("Erro: " + erro.getMessage());
+		} finally {
+			Banco.closeResultSet(resultado);
+			Banco.closeStatement(stmt);
+			Banco.closeConnection(conn);
 		}
-	} catch (SQLException erro){
-		System.out.println("Erro ao executar consultar todas as pessoas");
-		System.out.println("Erro: " + erro.getMessage());
-	} finally {
-		Banco.closeResultSet(resultado);
-		Banco.closeStatement(stmt);
-		Banco.closeConnection(conn);
+		return pessoas;
 	}
-	return pessoas;
-}
 
 }
