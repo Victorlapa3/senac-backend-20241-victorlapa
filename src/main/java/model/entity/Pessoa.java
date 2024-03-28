@@ -1,62 +1,48 @@
 package model.entity;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Pessoa {
-	private String nome;
-	private LocalDate dtNascimento;
-	private char sexo;
-	private String cpf;
-	private String tipo;
+	
 	private int id;
-	private Pais pais;
+	private String nome; 
+	private String cpf;
+	private char sexo;
+	private LocalDate dataNascimento;
+	private int tipo;
+	private Pais paisOrigem;
+	
+	//Comentado para evitar confusões durante a prova
+	//private ArrayList<Vacinacao> vacinacoes;
+	
 	
 	public Pessoa() {
-		super();
-	}
-	
-	public Pessoa(String nome, LocalDate dtNascimento, char sexo, String cpf, String tipo, int id, Pais pais) {
-		super();
-		this.nome = nome;
-		this.dtNascimento = dtNascimento;
-		this.sexo = sexo;
-		this.cpf = cpf;
-		this.tipo = tipo;
-		this.id = id;
-		this.pais = pais;
-	}
-	public Pais getPais() {
-		return pais;
+		
 	}
 
-	public void setPais(Pais pais) {
-		this.pais = pais;
+	public Pessoa(int id, String nome, String cpf, char sexo, LocalDate dataNascimento, int tipo, Pais pais) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.cpf = cpf;
+		this.sexo = sexo;
+		this.dataNascimento = dataNascimento;
+		this.tipo = tipo;
+		this.paisOrigem = pais;
+		//this.vacinacoes = vacinacoes;
 	}
 	public int getId() {
 		return id;
 	}
-
 	public void setId(int id) {
 		this.id = id;
 	}
-
 	public String getNome() {
 		return nome;
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-	public LocalDate getDtNascimento() {
-		return dtNascimento;
-	}
-	public void setDtNascimento(LocalDate dtNascimento) {
-		this.dtNascimento = dtNascimento;
-	}
-	public char getSexo() {
-		return sexo;
-	}
-	public void setSexo(char sexo) {
-		this.sexo = sexo;
 	}
 	public String getCpf() {
 		return cpf;
@@ -64,11 +50,39 @@ public class Pessoa {
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-	public String getTipo() {
+	public char getSexo() {
+		return sexo;
+	}
+	public void setSexo(char sexo) {
+		this.sexo = sexo;
+	}
+	public LocalDate getDataNascimento() {
+		return dataNascimento;
+	}
+	public void setDataNascimento(LocalDate dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+	public int getTipo() {
 		return tipo;
 	}
-
-	public void setTipo(String tipo) {
+	public void setTipo(int tipo) {
 		this.tipo = tipo;
 	}
+
+	public Pais getPaisOrigem() {
+		return paisOrigem;
+	}
+
+	public void setPaisOrigem(Pais paisOrigem) {
+		this.paisOrigem = paisOrigem;
+	}
+	
+
+//	public ArrayList<Vacinacao> getVacinacoes() {
+//		return vacinacoes;
+//	}
+//
+//	public void setVacinacoes(ArrayList<Vacinacao> vacinacoes) {
+//		this.vacinacoes = vacinacoes;
+//	}
 }

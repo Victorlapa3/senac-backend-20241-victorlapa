@@ -2,11 +2,12 @@ package controller;
 
 import java.util.List;
 
-import Exception.ControleDeVacinaException;
+import exception.VacinacaoException;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
+import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
@@ -22,14 +23,21 @@ public class PessoaController {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Pessoa salvar(Pessoa novaPessoa) throws ControleDeVacinaException {
-		return service.salvar(novaPessoa);
+	public Pessoa salvar(Pessoa novaPessoa) throws VacinacaoException{
+		 return service.salvar(novaPessoa);
+	}
+	
+	@PUT
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_PLAIN)
+	public boolean atualizar(Pessoa pessoaEditada) throws VacinacaoException{
+		 return service.atualizar(pessoaEditada);
 	}
 	
 	@DELETE
 	@Path("/{id}")
-	public boolean excluir(@PathParam("id") int id) {
-		return service.excluir(id);
+	public boolean excluir(@PathParam("id") int id) throws VacinacaoException{
+		 return service.excluir(id);
 	}
 	
 	@GET
